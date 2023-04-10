@@ -13,13 +13,13 @@
 <div class="list">
     <a href="/">Powrót do strony głównej</a>
     <ul class="list-group">
-        <li class="list-group-item d-flex justify-content-between align-items-center" th:each="product: ${products}">
-            <span th:text="${product.name}"></span>
-            <span th:text="|${#numbers.formatDecimal(product.price, 0, 'WHITESPACE', 2 , 'COMMA' )} zł|">2137</span>
+        <li class="columns" th:each="product: ${products}">
+            <span class="column" th:text="${product.name}"></span>
+            <span class="column" th:text="${product.category.shortDeDescription}"></span>
+            <span class="column" th:text="|${#numbers.formatDecimal(product.price, 0, 'WHITESPACE', 2 , 'COMMA' )} zł|">2137</span>
         </li>
     </ul>
     <b th:text="|Suma: ${#numbers.formatDecimal(priceSum, 0, 'WHITESPACE', 2 , 'COMMA' )} zł|">2100000</b>
-
 
 </div>
 

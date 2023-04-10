@@ -12,14 +12,24 @@ a {
 }
 
 .list {
+    width: 700px;
+    margin: 50px auto;
+}
+
+.content {
     width: 500px;
     margin: 50px auto;
 }
 
-label .form {
-    display: block;
+.column {
+    width: 100%;
 }
-.content {
-    width: 500px;
-    margin: 50px auto;
+
+@media (min-width: 48em) {
+    .columns {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        width: 100%;
+    }
 }
