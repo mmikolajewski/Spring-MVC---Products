@@ -10,11 +10,10 @@ import java.util.List;
 
 @Controller
 public class ProductsController {
+    private ProductService productService;
 
-    ProductsRepository productsRepository;
-
-    public ProductsController(ProductsRepository productsRepository) {
-        this.productsRepository = productsRepository;
+    public ProductsController(ProductService productService) {
+        this.productService = productService;
     }
 
     @GetMapping("/")
@@ -25,21 +24,15 @@ public class ProductsController {
 
     @GetMapping("/lista")
     public String list(@RequestParam (required = false, name = "kategoria") String category, Model model) {
-        List<Product> products;
+        ProductDto productDto;
 
         if (category != null) {
-            products = productsRepository.findByCategory(category);
+            productDto = productService.findByCategory(category);
 
         } else {
-            products = productsRepository.findAll();
+            productDto = productService.findAll();
         }
-        model.addAttribute("products", products);
-
-        double sum = products.stream()
-                .map(Product::getPrice)
-                .reduce(0.0, Double::sum);
-
-        model.addAttribute("priceSum", sum);
+        model.addAttribute("products", productDto);
         return "list";
 
     }
@@ -47,13 +40,12 @@ public class ProductsController {
     @GetMapping("/dodaj")
     public String addForm(Model model) {
         model.addAttribute("product", new Product());
-        model.addAttribute("categories", Category.values());
         return "add";
     }
 
     @PostMapping("/dodaj")
     public String add(Product product) {
-        productsRepository.add(product);
+        productService.add(product);
         return "redirect:/lista?kategoria=" + product.getCategory().getShortDeDescription();
     }
 

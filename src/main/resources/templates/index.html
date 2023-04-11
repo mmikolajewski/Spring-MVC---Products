@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <a href="/dodaj">&#43 Dodaj produkt</a>
-        <a href="/lista?kategoria=wszystkie" >&#8594;Wyświetl wszystkie produkty</a>
+        <a href="/lista" >&#8594;Wyświetl wszystkie produkty</a>
         <a th:href="@{'/lista?kategoria=' + ${category.shortDeDescription}}" class="category" th:each="category: ${categories}"
             th:text="|&#8594 wyświetl produkty z kategorii ${category.fullDescription}|"</a>
     </div>

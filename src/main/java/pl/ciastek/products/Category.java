@@ -2,9 +2,9 @@ package pl.ciastek.products;
 
 public enum Category {
 
-    food("Art.spozywcze", "spozywcze"),
-    home("Art.gosp.domowego", "domowe"),
-    other("Inne", "inne")
+    FOOD("Art.spozywcze", "spozywcze"),
+    HOME("Art.gosp.domowego", "domowe"),
+    OTHER("Inne", "inne")
     ;
 
     private final String fullDescription;
