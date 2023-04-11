@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodawanie produktu</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link rel="stylesheet" type="text/css" href="/style.css"/>
+
+</head>
+<body>
+
+<div class="content">
+  <a href="/">Powrót do strony głównej</a>
+
+  <form action="/dodaj" method="post" th:object="${product}">
+
+    <div class="form-group row">
+      <label for="staticEmail" class="col-sm-2 col-form-label">nazwa</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="staticEmail" placeholder="Nazwa" th:field="*{name}"/>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="category" class="col-sm-2 col-form-label">Gatunek</label>
+      <div class="col-sm-10">
+        <select class="form-control" id="category" name="category">
+            <option value="" disabled selected>Wybierz..</option>
+            <option th:each="categoryOption: ${T(pl.ciastek.products.Category).values()}"
+                    th:value="${categoryOption.name()}"
+                    th:text="${categoryOption.shortDeDescription}"
+            >Okno</option>
+        </select>
+
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="price" class="col-sm-2 col-form-label">Cena</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control" id="price" placeholder="Cena" th:field="*{price}"></input>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label"></label>
+      <div class="col-sm-10">
+        <input type="submit" th:value="Dodaj" class="btn btn-primary" />
+      </div>
+        </div>
+  </form>
+
+
+</div>
+
+</body>
+</html>

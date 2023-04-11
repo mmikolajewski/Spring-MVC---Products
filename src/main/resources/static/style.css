@@ -1,0 +1,35 @@
+.container {
+    flex-direction: column;
+    text-align: left;
+    margin-top: 50px;
+    padding: 50px;
+    border: 3px solid green;
+
+}
+a {
+    white-space: pre;
+    display: block;
+}
+
+.list {
+    width: 700px;
+    margin: 50px auto;
+}
+
+.content {
+    width: 500px;
+    margin: 50px auto;
+}
+
+.column {
+    width: 100%;
+}
+
+@media (min-width: 48em) {
+    .columns {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        width: 100%;
+    }
+}

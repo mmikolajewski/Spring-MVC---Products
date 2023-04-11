@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Magazyn produktów</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="/style.css"/>
+
+</head>
+<body>
+    <div class="container">
+        <a href="/dodaj">&#43 Dodaj produkt</a>
+        <a href="/lista" >&#8594;Wyświetl wszystkie produkty</a>
+        <a th:href="@{'/lista?kategoria=' + ${category.shortDeDescription}}" class="category" th:each="category: ${categories}"
+            th:text="|&#8594 wyświetl produkty z kategorii ${category.fullDescription}|"</a>
+    </div>
+</body>
+</html>

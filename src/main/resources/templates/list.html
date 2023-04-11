@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista artykułów</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/style.css"/>
+</head>
+<body>
+
+
+<div class="list">
+    <a href="/">Powrót do strony głównej</a>
+    <ul class="list-group">
+        <li class="columns" th:each="product: ${products.getProductList()}">
+            <span class="column" th:text="${product.name}"></span>
+            <span class="column" th:text="${product.category.shortDeDescription}"></span>
+            <span class="column" th:text="|${#numbers.formatDecimal(product.price, 0, 'WHITESPACE', 2 , 'COMMA' )} zł|">2137</span>
+        </li>
+    </ul>
+    <b th:text="|Suma: ${#numbers.formatDecimal(products.sum, 0, 'WHITESPACE', 2 , 'COMMA' )} zł|">2100000</b>
+
+</div>
+
+
+</body>
+</html>
